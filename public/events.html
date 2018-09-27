@@ -1,0 +1,38 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>UT Event</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+
+<body>
+<h1>Welcome to UT Events!</h1>
+	<div class="topnav">
+		<a class="navitem" href="events.html">Events</a>
+        <a class="navitem" href="my_events.html">My Events</a>
+		<a class="navitem" href="contact.html">Contact</a>
+	</div>
+	<h4>Event Dashboard</h4>
+
+	<div class="btn-group">
+        <button type="button" onclick="location.href='{% url 'create' %}'">Create Event</button>
+
+	    <button type="button" onclick="location.href='{% url 'my_events' %}'">My Events</button><br>
+    </div>
+		<h4>Event Types</h4>
+    <div class="btn-group">
+        <button type="button" onclick="location.href='{% url 'free_page' %}'">Free</button>
+
+	    <button type="button" onclick="location.href='{% url 'discounted_page' %}'">Discounted</button>
+
+	    <button type="button" onclick="location.href='{% url 'fullprice_page' %}'">Full Price</button>
+    </div>
+	<br>
+	<br>
+	<br>
+<!--<div id="map" style="width:1250px;height:350px">My map will go here</div>-->
+	Welcome to UT Events! This is your go-to site for campus events.
+</body>
+</html>

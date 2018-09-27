@@ -1,0 +1,77 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+
+</head>
+<body>
+<h1>Welcome to UT Events</h1>
+<div class="topnav">
+		<a class="navitem" href="events.html">Events</a>
+        <a class="navitem" href="my_events.html">My Events</a>
+		<a class="navitem" href="contact.html">Contact</a>
+	</div>
+
+<h2>Contact Form</h2>
+<form action="/index.html" method="post">
+{% csrf_token %}
+  Name:<br>
+  <input type="text" name="name" size="50"><br>
+    <br>
+  E-mail:<br>
+  <input type="text" name="mail" size="50"><br>
+    <br>
+  Comment:<br>
+    <textarea rows="4" cols="50"></textarea>
+    <input type="hidden" name="url" id="url"><br><br>
+    <input type="submit" onclick="location.href='{% url 'contact' %}'" value="Send">
+    <input type="reset" value="Reset">
+</form>
+
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+
+  var config = {
+    apiKey: "AIzaSyDHJUxtsUuIV-j4wguJO841QprGCi7Q5VE",
+    authDomain: "apad-events-app.firebaseapp.com",
+    databaseURL: "https://apad-events-app.firebaseio.com",
+    projectId: "apad-events-app",
+    storageBucket: "apad-events-app.appspot.com",
+    messagingSenderId: "687426306023"
+  };
+  firebase.initializeApp(config);
+
+  function uploadimage() {
+  var storage = firebase.storage()
+
+  var file = document.getElementbyId("files").files[0];
+
+  var storageRef = storage.ref();
+
+  var thisref = storageref.child(file.name).put(file);
+
+  thisref.on('state_change',function(snapshot)){
+
+  console.log("file uploaded successfully");
+
+  },
+
+  function(error) {
+
+
+  },
+
+  function() {
+
+  //Get the download URL
+  var downloadURL = thisref.snapshot.downloadURL;
+  console.log("Image URL retrieved")
+  document.getElementbyId("url").value = downloadURL;
+  });
+
+  }
+</script>
+</html>

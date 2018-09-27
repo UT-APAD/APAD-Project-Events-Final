@@ -1,0 +1,98 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UT Event</title>
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+<body>
+<h1>Welcome to UT Events</h1>
+
+<div class="topnav">
+	<a class="navitem" href="events.html">Events</a>
+	<a class="navitem" href="my_events.html">My Events</a>
+	<a class="navitem" href="contact.html">Contact</a>
+</div>
+
+<h1>Tell us about your event!</h1>
+	<form action="/submitted_event.html" method="post">
+		{% csrf_token %}
+	<div>
+	<label>Name of Event:</label><br>
+	<input type="text" name="event_name" required>
+	</div><br>
+	<div>
+	<label>Event Description:</label><br>
+	<textarea name="description" rows="6" cols="50" required></textarea>
+	</div><br>
+	<div>
+	<label>Event Location:</label><br>
+	<select name="location" required>
+			<option value=null>Select Location</option>
+			<option value="CBA">McCombs School of Business</option>
+			<option value="GG">Gregory Gym</option>
+			<option value="SAC">Student Activities Center</option>
+			<option value="Stadium">Stadium</option>
+			<option value="UT Tower">UT Tower</option>
+		</select>
+	</div><br>
+	<div>
+		<label>Event Type:</label><br>
+		<select name="event_type" required>
+			<option value=null>Select event type</option>
+			<option value="free">Free</option>
+			<option value="discounted">Discounted</option>
+			<option value="full_price">Full Price</option>
+		</select>
+	</div><br>
+	<div>
+	<label>Event Date & Time:</label><br>
+	<input type="datetime-local" name="date_time" required></div><br>
+	<div>
+	<label>Event tag(s)</label><br>
+	<textarea  name="event_tag" placeholder="Please separate tags by comma" rows="4" cols="50"></textarea>
+	</div><br>
+	<div>
+		<label>Event Image</label><br>
+		<input type="file" name="files[]" id="files" required>
+		<input type="hidden" name="url" id="url">
+		<button type="button" onclick="uploadimage()">Upload</button><br><br>
+	</div><br>
+	<button name="button">Submit</button>
+</form>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+    var config = {
+    apiKey: "AIzaSyDHJUxtsUuIV-j4wguJO841QprGCi7Q5VE",
+    authDomain: "apad-events-app.firebaseapp.com",
+    databaseURL: "https://apad-events-app.firebaseio.com",
+    storageBucket: "apad-events-app.appspot.com",
+    messagingSenderId: "687426306023"
+  };
+
+  firebase.initializeApp(config);
+  function uploadimage(){
+  var storage = firebase.storage();
+  var file = document.getElementById("files").files[0];
+  var storageRef = storage.ref();
+  var thisref = storageRef.child('/images/').child(file.name).put(file);
+  thisref.on('state_changed',function(snapshot){
+  console.log("file uploaded successfully");
+  },
+  function(error) {
+  },
+  function() {
+  // Upload completed successfully, now we can get the download URL
+
+  var downloadURL = thisref.snapshot.ref.getDownloadURL().then(function (url) {
+  	document.getElementById("url").value = downloadURL;
+  	console.log(url);
+  });
+
+  document.getElementById("url").value = downloadURL;
+  alert("file uploaded successfully");
+});
+    }
+</script>
+</html>

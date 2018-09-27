@@ -1,0 +1,34 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>UT Event</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+
+<body>
+<h1>Welcome to UT Events!</h1>
+	<div class="topnav">
+		<a class="navitem" href="/events.html">Events</a>
+		<a class="navitem" href="/my_events.html">My Events</a>
+		<a class="navitem" href="/contact.html">Contact</a>
+	</div>
+	<br><br>
+	&nbsp;<b>Event Name:</b> {{en}}<br>
+	<br>
+	&nbsp;<b>Description:</b> {{desc}}<br>
+	<br>
+	&nbsp;<b>Event Type:</b> {{et}}<br>
+	<br>
+	&nbsp;<b>Date/Time:</b> {{dt}}<br>
+	<br>
+	&nbsp;<b>Location:</b> {{l}}<br>
+	<br>
+	&nbsp;<b>Event Tag(s):</b> {{e_tag}}<br>
+	<br>
+	&nbsp;<b>Event Image:</b><br>
+	<img src="{{i}}" width="50%" height="50%">
+
+</body>
+</html>

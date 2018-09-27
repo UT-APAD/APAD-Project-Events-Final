@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UT Event</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Welcome to UT Event</h1>
+<div class="topnav">
+  <a class="navitem" href="index.html">Home</a>
+  <a class="navitem" href="#news">Events</a>
+  <a class="navitem" href="contact.html">Contact</a>
+  <a class="navitem" href="submit_event.html">Submit Event</a>
+  <a class="navitem" href="#about">About</a>
+</div>
+
+<h1>Tell us about the event!</h1>
+	<form method="post" action="result.php">
+	<div>
+	<label>1. When is the event?(Please include date and time)</label>
+	<input type="text" name="year">
+	</div>
+	<div>
+	<label>2. Where is the event located?</label>
+	<select name="location">
+			<option value="GSB">Graduate school of business</option>
+			<option value="dell_CS_Center">Dell computer science center</option>
+			<option value="att">AT&T Conference Center</option>
+			<option value="don't_know">I don't know.</option>
+		</select>
+	</div>
+	<div>
+		<label>3. Is it free or not?</label>
+		<select name="free">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+			<option value="don't_know">I don't know.</option>
+		</select>
+	</div>
+<h2>Add your photo here!</h2>
+<form method="post" enctype="multipart/form-data">
+	<div>
+		<label>Image</label>
+		<input type="file" name="form_image">
+	</div>
+	<div>
+		<label>Description</label>
+		<input type="text" name="form_description">
+	</div>
+	<button>Submit</button>
+</form>
+</body>
+</html>

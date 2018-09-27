@@ -1,0 +1,41 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>UT Event</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+
+<body>
+<h1>Welcome to UT Events!</h1>
+	<div class="topnav">
+		<a class="navitem" href="events.html">Events</a>
+		<a class="navitem" href="my_events.html">My Events</a>
+		<a class="navitem" href="contact.html">Contact</a>
+	</div>
+	 <br>
+		Welcome, {{e}}!
+	<h4>Event Dashboard</h4>
+
+	<div class="btn-group">
+        <button type="button" onclick="location.href='{% url 'create' %}'">Create Event</button>
+
+	    <button type="button" onclick="location.href='{% url 'my_events' %}'">My Events</button>
+    </div><br>
+
+<h3>Your Events</h3>
+
+	{% for my_list,event_name,date_time,event_type,location,description,event_tag,url in comb_lis %}
+
+	&nbsp;<img src="{{url}}" width="30%" height="30%"><br>
+<br>
+&nbsp;<b>Event Name:</b> {{event_name}}<br>
+<br>
+&nbsp;<b>Tag(s):</b> {{event_tag}}<br>
+&nbsp;<a href="/specific_event/?z={{my_list}}&e={{event_type}}" >Learn More</a><br>
+<br>
+	{% endfor %}<br>
+<br>
+</body>
+</html>

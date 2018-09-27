@@ -1,0 +1,185 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.login{
+    background:orange;
+    width:300px;
+    border-radius:6px;
+    margin: 0 auto 0 auto;
+    padding:0px 0px 70px 0px;
+    border: #2980b9 4px solid;
+}
+
+.username{
+    text-align:center;
+}
+
+h1 {
+	text-align: center;
+}
+
+body {
+	font-family: 'Bree Serif', serif;
+	font-size: 18px;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFA500;
+	padding: 20px;
+}
+
+.topnav {
+    background-color: #778899;
+    overflow: hidden;
+    padding-left: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add an active class to highlight the current page */
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.btn-group button {
+    background-color: #778899;
+    border: 1px solid black; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #B0C4DE;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  background: #eee;
+}
+
+.container {
+  display: block;
+  width: 150px;
+  height: 262px;
+  background: #ffffff;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px 10px 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.container:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  background: red;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(130deg, #e67e22 10%, #e74c3c 100%);
+}
+
+.poster {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 1px 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.poster__img {
+  height: 100px;
+  /*background: url("");*/
+  background-position: center;
+  background-size: cover;
+  width: 10%;
+}
+.poster__info {
+  background: #fff;
+  padding: 25px 25px 40px;
+}
+.poster__title {
+  font-size: 1.2em;
+  font-weight: 300;
+  margin-bottom: .4em;
+}
+.poster__text {
+  font-size: .9em;
+  color: #999;
+  font-weight: 300;
+}
+
+a {
+  display: block;
+  width: 250px;
+  background: #27ae60;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  text-decoration: none;
+  font-size: .9em;
+  font-weight: 300;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.3s;
+}
+a:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.18);
+}

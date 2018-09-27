@@ -1,0 +1,99 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>UT Event</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+<h1>Full-Price Events</h1>
+<body>
+<div class="topnav">
+		<a class="navitem" href="events.html">Events</a>
+		<a class="navitem" href="my_events.html">My Events</a>
+		<a class="navitem" href="contact.html">Contact</a>
+	</div>
+<br>
+Welcome, {{e}}! &nbsp
+<button type="button" id="full" onclick="location.href='{% url 'full_price' %}'">Subscribe to Full-Priced Events</button>
+<form method="get" action="/fullprice_events.html" id="s">
+		{% csrf_token %}
+		<input type="text" placeholder="Search here" name="search">
+		<input type="hidden" value="{{uid}}">
+		<button type="submit" onclick="location.href='/fullprice_events/?uid={{uid}}'" form="s">Search</button>
+	</form>
+&nbsp;
+<br>
+<div id="map" style="width:925px;height:350px">My map will go here</div>
+<br>
+<h3>Events</h3>
+
+{% for lis_time,event_name,date_time,event_type,location,description,event_tag,url in comb_lis %}
+
+&nbsp;<img src="{{url}}" width="30%" height="30%"><br>
+<br>
+&nbsp;<b>Event Name:</b> {{event_name}}<br>
+<br>
+&nbsp;<b>Tag(s):</b> {{event_tag}}<br>
+&nbsp;<a href="/specific_event/?z={{lis_time}}&e={{event_type}}" >Learn More</a><br>
+<br>
+	{% endfor %}<br>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDHJUxtsUuIV-j4wguJO841QprGCi7Q5VE",
+    authDomain: "apad-events-app.firebaseapp.com",
+    databaseURL: "https://apad-events-app.firebaseio.com",
+    projectId: "apad-events-app",
+    storageBucket: "apad-events-app.appspot.com",
+    messagingSenderId: "687426306023"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+
+       function initMap() {
+        var uluru = {lat: 30.267153, lng: -97.743061};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: uluru
+        });
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">University of Texas at Austin</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>University of Texas at Austin</b>, also referred to as <b>UT Austin</b>, is a large ' +
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          title: 'UT (Ayers Rock)'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+</script>
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRmpxad3GGbXaqYq0UfPojPfzxniok1nU&callback=initMap">
+    </script>
+</body>
+</html>

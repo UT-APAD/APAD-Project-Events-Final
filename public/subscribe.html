@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>UT Event</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="topnav">
+		<a class="navitem" href="events.html">Events</a>
+		<a class="navitem" href="my_events.html">My Events</a>
+		<a class="navitem" href="subscribe.html">Subscriptions</a>
+		<a class="navitem" href="contact.html">Contact</a>
+	</div>
+
+<h2>Subscription Settings</h2>
+
+<button type="button" onclick="location.href='{% url 'free' %}'">Subscribe to Free Events</button><br>
+<br>
+<button type="button" onclick="location.href='{% url 'discounted' %}'">Subscribe to Discounted Events</button><br>
+<br>
+<button type="button" onclick="location.href='{% url 'full_price' %}'">Subscribe to Full-Price Events</button><br>
+
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDHJUxtsUuIV-j4wguJO841QprGCi7Q5VE",
+    authDomain: "apad-events-app.firebaseapp.com",
+    databaseURL: "https://apad-events-app.firebaseio.com",
+    projectId: "apad-events-app",
+    storageBucket: "apad-events-app.appspot.com",
+    messagingSenderId: "687426306023"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</body>
+</html>

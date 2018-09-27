@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>UT Event</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="topnav">
+		<a class="navitem" href="events.html">Events</a>
+		<a class="navitem" href="my_events.html">My Events</a>
+		<a class="navitem" href="contact.html">Contact</a>
+	</div>
+<h2>Full-Priced Events</h2>
+Welcome, {{e}}!<br>
+<br>
+<button type="button" id="full" onclick="location.href='{% url 'full_price' %}'">Subscribe to Full-Priced Events</button><br>
+<br>
+<div id="map" style="width:1250px;height:350px">My map will go here</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDHJUxtsUuIV-j4wguJO841QprGCi7Q5VE",
+    authDomain: "apad-events-app.firebaseapp.com",
+    databaseURL: "https://apad-events-app.firebaseio.com",
+    projectId: "apad-events-app",
+    storageBucket: "apad-events-app.appspot.com",
+    messagingSenderId: "687426306023"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+
+       function initMap() {
+        var uluru = {lat: 30.267153, lng: -97.743061};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">University of Texas at Austin</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>University of Texas at Austin</b>, also referred to as <b>UT Austin</b>, is a large ' +
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '+
+            'Lorem ipsum</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          title: 'UT (Ayers Rock)'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+</script>
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRmpxad3GGbXaqYq0UfPojPfzxniok1nU&callback=initMap">
+    </script>
+</body>
+</html>
