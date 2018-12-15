@@ -19,9 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vyajq#%l4=^3-h=lh3mhholwwuyv)-zalgz+*^na@r9s3z5=h7'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -75,9 +72,6 @@ EMAIL_HOST_USER = 'mhmdndoye'
 EMAIL_HOST_PASSWORD = 'APADEvents2018'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-SENDGRID_API_KEY = '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'
-SENDGRID_SENDER = 'mouhamed.ndoye@utexas.edu'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
