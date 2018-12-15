@@ -66,13 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'setup.wsgi.application'
 
-#Email Setup
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'mhmdndoye'
-EMAIL_HOST_PASSWORD = 'APADEvents2018'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
